@@ -10,6 +10,7 @@ public class linklistarray {
 		las.insert(las, 555);
 		las.printaall(las);
 		System.out.println(las.count(las));
+		System.out.println("");
 
 	}
 }
