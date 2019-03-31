@@ -16,15 +16,16 @@ public class linklistarray {
 }
 
 class linkds {
-	public static node n;
-
+	node head; 
+	//insert data at the end
 	public static linkds insert(linkds head, int d) {
+		
 		node hd = new node(d);
 		hd.next = null;
-		if (head.n == null) {
-			head.n = hd;
+		if (head.head == null) {
+			head.head = hd;
 		} else {
-			node last = head.n;
+			node last = head.head;
 			while (last.next != null) {
 				last = last.next;
 			}
@@ -34,15 +35,16 @@ class linkds {
 	}
 
 	public void printaall(linkds list) {
-		node currntnode = list.n;
+		node currntnode = list.head;
 		while (currntnode != null) {
 			System.out.println(currntnode.data);
 			currntnode = currntnode.next;
 		}
 	}
+	
 
 	public void printallrev(linkds list) {
-		node currntnode = list.n;
+		node currntnode = list.head;
 		while (currntnode != null) {
 			System.out.println(currntnode.data);
 			currntnode = currntnode.next;
@@ -51,17 +53,18 @@ class linkds {
 
 	public int count(linkds list) {
 		int c = 0;
-		node currntnode = list.n;
+		node currntnode = list.head;
 		while (currntnode != null) {
 			c++;
 			currntnode = currntnode.next;
 		}
 		return c;
 	}
+	
 
-}
 
-class node {
+
+static class node {
 	int data;
 	node next;
 
@@ -85,4 +88,5 @@ class node {
 	public void setNext(node next) {
 		this.next = next;
 	}
+}
 }
