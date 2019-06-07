@@ -2,6 +2,7 @@ package com.rashid;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -17,7 +18,7 @@ public class filetomysql {
 	static Connection c = null;
 	static Statement stmt = null;
 	String result = "";
- PreparedStatement insertdata;
+ static PreparedStatement insertdata;
 	public static void main(String...a) {
 
 		try {
@@ -28,31 +29,18 @@ public class filetomysql {
 			
 			
 			stmt = c.createStatement();
-			 ResultSet rs = stmt.executeQuery("select * from filemysql");
-				if(rs.next())
+			File file = new File("D:/json/helo.jpg");
+			InputStream in=new FileInputStream("D:/json/helo.jpg");
+			insertdata=c.prepareStatement("insert into filemysql values(?,?)");
+			insertdata.setString(1, file.getName());
+			insertdata.setBinaryStream(2, in);
+			
+			 int rs = insertdata.executeUpdate();
+				if(rs>0)
 				{
-					String flname=rs.getString(1);
-					InputStream fl=rs.getBinaryStream(2);
-					
-
-					File file = new File("D:/json/helo.jpg");
-					/*
-					 * If file gets created then the createNewFile() method would return true or if
-					 * the file is already present it would return false
-					 */
-					file.createNewFile();	
-					OutputStream out = new BufferedOutputStream(new FileOutputStream("D:/json/helo.jpg"));
-
-					for (int b; (b = fl.read()) != -1;) {
-						out.write(b);
-					}
+					System.out.println(rs);
 					
 				}
-				System.out.println("done");
-			//Part filePart = request.getPart("photo");
-          //  InputStream pis = filePart.getInputStream();
-			// updateUser.setBinaryStream(10, im);
-			
 			
 			
 		}
