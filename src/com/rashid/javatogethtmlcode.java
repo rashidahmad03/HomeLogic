@@ -14,7 +14,7 @@ public class javatogethtmlcode {
         public static void main(String[] args) {
 
             //String that receive the URL
-            String url = "rashidahmad.ml";
+            String url = "www.youtube.com";
 
             getHTML(url);
         }

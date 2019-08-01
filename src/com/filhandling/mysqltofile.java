@@ -1,4 +1,4 @@
-package com.rashid;
+package com.filhandling;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -15,7 +15,7 @@ public class mysqltofile {
 
 	static Connection c = null;
 	static Statement stmt = null;
-	String result = "";
+	
 	PreparedStatement insertdata;
 
 	public static void main(String... a) {
@@ -23,7 +23,7 @@ public class mysqltofile {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/digicloud", "root", "Nokia@123");
+			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/digicloud?useSSL=false", "root", "Nokia@123");
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from filemysql");
 			while(rs.next()) {

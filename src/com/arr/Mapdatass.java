@@ -13,6 +13,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public class Mapdatass extends Application {
 	private Scene scene;
 
